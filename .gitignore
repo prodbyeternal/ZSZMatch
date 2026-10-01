@@ -1,0 +1,15 @@
+# Build output
+bin/
+obj/
+
+# Local NuGet overrides
+*.nuget.props
+*.nuget.targets
+
+# Editor / OS noise
+.vs/
+.idea/
+*.user
+*.suo
+Thumbs.db
+desktop.ini

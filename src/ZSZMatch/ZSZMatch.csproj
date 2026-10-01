@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    CounterStrikeSharp 1.0.376 (the version this plugin is built and verified against)
+    ships its API assembly for .NET 10, so the plugin must target net10.0.
+    See README.md -> "Building the plugin" for the .NET 10 SDK requirement.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <!-- The CounterStrikeSharp runtime supplies CounterStrikeSharp.API.dll, so never
+         copy it (or its transitive dependencies) next to the plugin assembly. -->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <RootNamespace>ZSZMatch</RootNamespace>
+    <AssemblyName>ZSZMatch</AssemblyName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <!-- All player facing text is Polish, so the sources have to be read as UTF-8
+         no matter what codepage the build machine happens to use. -->
+    <CodePage>65001</CodePage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CounterStrikeSharp.API" Version="1.0.376" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Ships next to the DLL: CounterStrikeSharp copies ZSZMatch.example.json to
+         configs/plugins/ZSZMatch/ZSZMatch.json on first load, Polish characters and
+         comments included, so nobody has to hand-write the config. -->
+    <None Update="ZSZMatch.example.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

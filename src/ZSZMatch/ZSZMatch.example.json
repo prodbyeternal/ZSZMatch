@@ -1,0 +1,172 @@
+{
+  // =====================================================================================
+  //  ZSZ Match - konfiguracja turnieju
+  //
+  //  Ten plik jest kopiowany automatycznie do ZSZMatch.json przy pierwszym uruchomieniu.
+  //  Po skopiowaniu edytuj ZSZMatch.json (albo ten plik - wtedy usuń gotowy ZSZMatch.json,
+  //  żeby plugin skopiował go ponownie).
+  //
+  //  Komentarze (// oraz /* */) są dozwolone.
+  //  Po zmianie ustawień wpisz na serwerze: css_zsz_reloadconfig
+  // =====================================================================================
+
+  "ConfigVersion": 1,
+
+  // Prefiks każdej wiadomości na czacie.
+  "ChatPrefix": "[ZSZ]",
+
+  // ------------------------------------------------------------------ ROZGRZEWKA
+  "Warmup": {
+    // Rozgrzewka zanim wszyscy się połączą: 105 sekund = 1:45.
+    "LongWarmupSeconds": 105,
+
+    // Rozgrzewka skrócona w momencie, gdy wszyscy są już na serwerze: 25 sekund.
+    "ShortWarmupSeconds": 25,
+
+    // Ilu graczy musi być w drużynie (T/CT), żeby skrócić rozgrzewkę.
+    "PlayersRequired": 10,
+
+    // Czy boty liczą się do powyższej liczby (przydatne przy teście solo).
+    "CountBotsTowardsPlayerCount": true,
+
+    // Czy widzowie (spectator) liczą się do liczby graczy.
+    "CountSpectatorsTowardsPlayerCount": false,
+
+    // false = jeśli po 1:45 nie ma kompletu graczy, serwer nadal czeka (zalecane).
+    // true  = mecz startuje po 1:45 nawet w niepełnych składach.
+    "StartMatchWhenWarmupExpiresWithoutFullServer": false,
+
+    // Duży licznik rozgrzewki na środku ekranu.
+    "CountdownHudEnabled": true,
+
+    // Co ile sekund przypominać, ilu graczy jeszcze brakuje.
+    "WaitingForPlayersNoticeSeconds": 30
+  },
+
+  // ------------------------------------------------------------------ RUNDA NOŻOWA
+  "KnifeRound": {
+    // Runda nożowa przed meczem (zwycięzca wybiera stronę startową).
+    "Enabled": true,
+
+    "FreezeTime": 15,
+    "RoundTime": 1.92,
+
+    // Kasa na start rundy nożowej. 0 = brak kasy na start.
+    "StartMoney": 0,
+
+    // 0 = brak, 1 = kamizelka, 2 = pełna kamizelka + hełm (full kevlar).
+    "FreeArmor": 2,
+
+    // Zabierz wszystko oprócz noża i pilnuj, żeby nikt nie kupił ani nie podniósł broni.
+    "GiveKnifeOnly": true,
+
+    // Remis w rundzie nożowej zdarza się często - powtarzamy rundę.
+    "ReplayOnDraw": true,
+
+    // Ile razy można powtórzyć remisową rundę nożową. Po tym limicie plugin losuje drużynę,
+    // żeby dwie grające "na remis" drużyny nie zablokowały całego turnieju.
+    "MaxReplays": 3
+  },
+
+  // ------------------------------------------------------------------ WYBÓR STRONY
+  "SidePick": {
+    "Enabled": true,
+
+    // Na ile sekund zamrozić grę, gdy kapitan wybiera stronę.
+    // W tym czasie nie można się ruszać, kupować ani zadać obrażeń.
+    "HoldFreezeTime": 60,
+
+    // Ile sekund ma kapitan na decyzję.
+    "TimeoutSeconds": 45,
+
+    // Ostrzeżenie na ile sekund przed końcem czasu.
+    "WarningSeconds": 15,
+
+    // Jeśli drużyna wygrywająca nie ma kapitana (np. boty), pozwól wybrać drugiemu kapitanowi.
+    "AllowOtherCaptainFallback": true,
+
+    // Dodatkowo akceptuj !pickct / !pickt wpisane na czacie.
+    "AllowChatFallbackCommands": true
+  },
+
+  // ------------------------------------------------------------------ STATYSTYKI
+  "Stats": {
+    "Enabled": true,
+
+    // Podsumowanie obu drużyn na czacie po każdej rundzie.
+    "ChatSummary": true,
+
+    // Panel ze statystykami na środku ekranu po każdej rundzie (jak w FACEIT).
+    "HudPanel": true,
+
+    "HudDurationSeconds": 7,
+
+    // Ilu zawodników z każdej drużyny pokazać na panelu.
+    "HudTopPlayersPerTeam": 3,
+
+    // Liczenie obrażeń (potrzebne do ADR).
+    "TrackDamage": true
+  },
+
+  // ------------------------------------------------------------------ ZASADY MECZU (FACEIT)
+  "Ruleset": {
+    // Wymuś cvary turniejowe (MR12, dogrywka, czasy, ekonomia).
+    "EnforceFaceitCvars": true,
+
+    // Ponawiaj cvary na początku każdej rundy, żeby nikt ich nie zmienił w trakcie meczu.
+    "EnforceCvarsEveryRound": true,
+
+    // MR12: 24 rundy w regulaminowym czasie (13 wygranych rund daje zwycięstwo).
+    "MaxRounds": 24,
+
+    "OvertimeEnabled": true,
+    "OvertimeMaxRounds": 6,
+    "OvertimeStartMoney": 10000,
+
+    // Czas zamrożenia na początku rundy.
+    "FreezeTime": 15,
+
+    // Czas rundy w minutach. 1.92 = 1:55.
+    "RoundTimeMinutes": 1.92,
+
+    // Czas na zakupy.
+    "BuyTime": 20,
+
+    // Kasa w meczu właściwym (nie w rundzie nożowej).
+    "StartMoney": 800,
+    "MaxMoney": 16000,
+
+    // Darmowa kamizelka w meczu. 0 = gracze kupują sami (jak w FACEIT).
+    "FreeArmor": 0,
+
+    // Dodatkowe cvary, np.:
+    // "AdditionalCvars": { "sv_deadtalk": "1", "mp_display_kill_assists": "1" }
+    "AdditionalCvars": {}
+  },
+
+  // ------------------------------------------------------------------ OGŁOSZENIA
+  "Announcements": {
+    // Komunikat "mecz się zaczął" - wyświetlany jako "[ZSZ] LIVE!".
+    "LiveMessage": "LIVE!",
+
+    // Ile razy zaspamować "[ZSZ] LIVE!".
+    "LiveSpamCount": 4,
+
+    "LiveSpamIntervalSeconds": 0.75,
+
+    // Wiadomość po starcie meczu - wyświetlana jako "[ZSZ] Życzymy miłej rozgrywki!".
+    "GoodLuckMessage": "Życzymy miłej rozgrywki!",
+
+    // Dodatkowo pokaż "LIVE!" na środku ekranu.
+    "LiveCenterAlert": true
+  },
+
+  // ------------------------------------------------------------------ TRYB TESTOWY
+  "TestMode": {
+    // Uruchom z true, żeby przetestować cały przebieg samemu (wystarczy 1 gracz).
+    // NIE zapomnij ustawić na false przed turniejem!
+    "Enabled": false,
+
+    "PlayersRequired": 1
+  }
+}
