@@ -4,8 +4,6 @@ Plugin do **CounterStrikeSharp** (CS2), który prowadzi mecz jak na FACEIT:
 rozgrzewka → kapitanowie (`!kapitan`) → runda nożowa → wybór strony → mecz na zasadach
 FACEIT (MR12) → statystyki po każdej rundzie.
 
-Wszystkie komunikaty w grze są po polsku (z ogonkami: ą/ć/ę/ł/ń/ó/ś/ź/ż).
-
 ---
 
 ## Szybki start (English)
